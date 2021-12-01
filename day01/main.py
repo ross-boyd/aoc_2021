@@ -1,14 +1,21 @@
-def solution(data: list, win_size: int) -> int:
-    """win_sized-measurement sliding window"""
-    increase, x = 0, 0
+"""
+Sonar Sweep
+"""
 
-    while x+1 < len(data):
+
+def solution(input_data: list, win_size: int) -> int:
+    """
+    win_sized-measurement sliding window
+    """
+    increase, index = 0, 0
+
+    while index+1 < len(input_data):
         try:
-            if(sum(data[x+1:x+1+win_size]) > sum(data[x:x+win_size])):
+            if sum(input_data[index+1:index+1+win_size]) > sum(input_data[index:index+win_size]):
                 increase += 1
-        except:
+        except IndexError:
             pass
-        x += 1
+        index += 1
     print(
         f"Number of {win_size} sized windows larger than previous: {increase}")
 
@@ -17,7 +24,7 @@ def solution(data: list, win_size: int) -> int:
 
 if __name__ == "__main__":
 
-    with open("input.txt", "r") as file:
+    with open("input.txt", "r", encoding="utf-8") as file:
         data = file.read().split("\n")
     data = [int(x) for x in data]
 
