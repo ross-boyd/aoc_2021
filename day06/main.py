@@ -26,11 +26,7 @@ def solution(fish_timers: list, days: int) -> int:
 
         fish_dict = next_dict.copy()
 
-    counter = 0
-    for _, count in fish_dict.items():
-        counter += count
-
-    return counter
+    return sum(fish_dict.values())
 
 
 if __name__ == '__main__':
